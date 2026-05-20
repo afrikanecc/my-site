@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вторая мировая война 1939-1945 | Исторический портал</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', 'Segoe UI', serif;
+            background: #e8e6df;
+            color: #1e1e1e;
+            line-height: 1.5;
+        }
+
+        .header {
+            background: #1a1a1a;
+            padding: 2rem 1rem 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid #8b3c3c;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            font-weight: normal;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: #cccccc;
+            font-style: normal;
+        }
+
+        .header .dates {
+            margin-top: 0.8rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #bc8f8f;
+            letter-spacing: 1px;
+        }
+
+        .nav {
+            background: #2c2c2c;
+            padding: 0.6rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #555;
+        }
+
+        .nav a {
+            color: #dddddd;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            margin: 0 0.2rem;
+            display: inline-block;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            border-right: 1px solid #555;
+        }
+
+        .nav a:last-child {
+            border-right: none;
+        }
+
+        .nav a:hover {
+            color: #ffffff;
+            background: #4a4a4a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: #ffffff;
+            border: 1px solid #cfcfcf;
+            margin-bottom: 2rem;
+            padding: 1.8rem;
+        }
+
+        .section h2 {
+            font-size: 1.6rem;
+            font-weight: normal;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid #aaa;
+            color: #2c2c2c;
+            letter-spacing: 1px;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .event-card {
+            background: #fefefe;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-left: 4px solid #8b3c3c;
+        }
+
+        .event-card .date {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #8b3c3c;
+            text-transform: uppercase;
+        }
+
+        .event-card h4 {
+            font-size: 1.1rem;
+            margin: 0.4rem 0;
+            font-weight: 600;
+            color: #1e1e1e;
+        }
+
+        .event-card p {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .commanders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .commander-card {
+            background: #fafaf7;
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .commander-icon {
+            font-size: 2rem;
+            font-family: monospace;
+            color: #8b3c3c;
+        }
+
+        .commander-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+            font-weight: 600;
+        }
+
+        .commander-info p {
+            font-size: 0.8rem;
+            color: #3d3d3d;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 0.5rem;
+            bottom: 0.5rem;
+            width: 1px;
+            background: #aaa;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '●';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            color: #8b3c3c;
+            font-size: 12px;
+            background: white;
+            padding-right: 4px;
+        }
+
+        .timeline-year {
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            color: #1e1e1e;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-item div:last-child {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .maps-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .map-card {
+            background: #fbfbf9;
+            border: 1px solid #d0d0d0;
+            padding: 1rem;
+            text-align: center;
+            flex: 1;
+            min-width: 240px;
+        }
+
+        .map-placeholder {
+            background: #e2dfd7;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin-bottom: 0.6rem;
+            border: 1px solid #c0bdb3;
+            color: #4a4a4a;
+        }
+
+        .map-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0.5rem 0 0.3rem;
+        }
+
+        .map-card p {
+            font-size: 0.8rem;
+            color: #3b3b3b;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin-top: 0.6rem;
+            padding: 0.3rem 0.8rem;
+            background: #2c2c2c;
+            color: #dddddd;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-family: 'Segoe UI', sans-serif;
+            border: 1px solid #555;
+            transition: background 0.2s;
+        }
+
+        .map-link:hover {
+            background: #8b3c3c;
+            color: white;
+            border-color: #8b3c3c;
+        }
+
+        .footer {
+            background: #1a1a1a;
+            text-align: center;
+            padding: 1.2rem;
+            margin-top: 1rem;
+            border-top: 2px solid #8b3c3c;
+            font-size: 0.75rem;
+            color: #aaaaaa;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.6rem; }
+            .nav a { padding: 0.4rem 0.6rem; font-size: 0.75rem; }
+            .container { padding: 1rem; }
+            .section { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ВТОРАЯ МИРОВАЯ ВОЙНА</h1>
+    <p>1939 — 1945 | История крупнейшего вооружённого конфликта XX века</p>
+    <div class="dates">1 сентября 1939 года — 2 сентября 1945 года</div>
+</div>
+
+<div class="nav">
+    <a href="#events">Основные события</a>
+    <a href="#commanders">Полководцы</a>
+    <a href="#maps">Карты сражений</a>
+    <a href="#timeline">Лента времени</a>
+</div>
+
+<div class="container">
+
+    <div id="events" class="section">
+        <h2>Основные события Второй мировой войны</h2>
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="date">1 сентября 1939 г.</div>
+                <h4>Нападение на Польшу</h4>
+                <p>Германия без объявления войны вторгается в Польшу. Начало Второй мировой войны. 3 сентября Великобритания и Франция объявляют войну Германии.</p>
+            </div>
+            <div class="event-card">
+                <div class="date">22 июня 1941 г.</div>
+                <h4>Операция «Барбаросса»</h4>
+                <p>Нападение нацистской Германии на Советский Союз. Начало Великой Отечественной войны — важнейшего этапа Второй мировой.</p>
+            </div>
+            <div class="event-card">
+                <div class="date">7 декабря 1941 г.</div>
+                <h4>Пёрл-Харбор</h4>
+                <p>Внезапное нападение японской авиации на базу США на Гавайях. Вступление США в войну.</p>
+            </div>
+            <div class="event-card">
+                <div class="date">17 июля 1942 — 2 февр. 1943 г.</div>
+                <h4>Сталинградская битва</h4>
+                <p>Окружение и разгром 6-й армии вермахта. Коренной перелом в ходе войны.</p>
+            </div>
+            <div class="event-card">
+                <div class="date">5 июля — 23 августа 1943 г.</div>
+                <h4>Курская битва</h4>
+                <p>Крупнейшее танковое сражение у Прохоровки. Окончательная потеря Германией стратегической инициативы.</p>
+            </div>
+            <div class="event-card">
+                <div class="date">6 июня 1944 г.</div>
+                <h4>Высадка в Нормандии</h4>
+                <p>Операция «Оверлорд» — открытие Второго фронта в Европе.</p>
+            </div>
+            <div class="event-card">
+                <div class="date">9 мая 1945 г.</div>
+                <h4>Капитуляция Германии</h4>
+                <p>Подписание Акта о безоговорочной капитуляции в Берлине. Окончание войны в Европе.</p>
+            </div>
+            <div class="event-card">
+                <div class="date">2 сентября 1945 г.</div>
+                <h4>Капитуляция Японии</h4>
+                <p>Окончание Второй мировой войны после разгрома Квантунской армии и атомных бомбардировок.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="commanders" class="section">
+        <h2>Выдающиеся военачальники</h2>
+        <div class="commanders-grid">
+            <div class="commander-card">
+                <div class="commander-icon">★</div>
+                <div class="commander-info">
+                    <h4>Георгий Жуков</h4>
+                    <p>Маршал Советского Союза. Командовал фронтами под Москвой, Сталинградом, брал Берлин. Принимал капитуляцию Германии.</p>
+                </div>
+            </div>
+            <div class="commander-card">
+                <div class="commander-icon">★</div>
+                <div class="commander-info">
+                    <h4>Константин Рокоссовский</h4>
+                    <p>Маршал СССР. Командовал парадом Победы. Отличился в Сталинградской и Курской битвах.</p>
+                </div>
+            </div>
+            <div class="commander-card">
+                <div class="commander-icon">★</div>
+                <div class="commander-info">
+                    <h4>Иван Конев</h4>
+                    <p>Маршал Советского Союза. Руководил 1-м Украинским фронтом, освобождал Прагу и штурмовал Берлин.</p>
+                </div>
+            </div>
+            <div class="commander-card">
+                <div class="commander-icon">★</div>
+                <div class="commander-info">
+                    <h4>Дуайт Эйзенхауэр</h4>
+                    <p>Главнокомандующий союзными войсками в Европе. Организатор операции «Оверлорд».</p>
+                </div>
+            </div>
+            <div class="commander-card">
+                <div class="commander-icon">★</div>
+                <div class="commander-info">
+                    <h4>Бернард Монтгомери</h4>
+                    <p>Британский фельдмаршал. Победа при Эль-Аламейне, командование войсками в Нормандии.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="maps" class="section">
+        <h2>Карты ключевых сражений</h2>
+        <div class="maps-container">
+            <div class="map-card">
+                <div class="map-placeholder">🗺️ Сталинград</div>
+                <h4>Сталинградская битва (1942–1943)</h4>
+                <p>Схема окружения 6-й армии Паулюса. Операция «Уран» — контрнаступление советских войск, ноябрь 1942 г.</p>
+                <p>Источник: карты Генштаба РККА, Минобороны РФ</p>
+                <a href="https://pamyat-naroda.ru/ops/stalingradskaya-bitva/" class="map-link" target="_blank" rel="noopener noreferrer">📌 Смотреть карту (Память народа)</a>
+            </div>
+            <div class="map-card">
+                <div class="map-placeholder">🗺️ Курская дуга</div>
+                <h4>Курская битва (июль–август 1943)</h4>
+                <p>План оборонительных рубежей и контрударов. Танковое сражение под Прохоровкой — 12 июля 1943 г.</p>
+                <a href="https://pamyat-naroda.ru/ops/kurskaya-bitva/" class="map-link" target="_blank" rel="noopener noreferrer">📌 Смотреть карту (Память народа)</a>
+            </div>
+            <div class="map-card">
+                <div class="map-placeholder">🗺️ Нормандия</div>
+                <h4>Высадка в Нормандии (6 июня 1944)</h4>
+                <p>Карта секторов высадки: «Юта», «Омаха», «Голд», «Джуно», «Сорд». Открытие Второго фронта.</p>
+                <a href="https://www.archives.gov/military/ww2/d-day" class="map-link" target="_blank" rel="noopener noreferrer">📌 Смотреть карту (National Archives)</a>
+            </div>
+        </div>
+        <p style="margin-top: 1rem; font-size:0.8rem; border-top: 1px solid #ddd; padding-top: 0.8rem;">※ На основе материалов Российского государственного военного архива и рассекреченных документов Минобороны. Ссылки ведут на официальные картографические ресурсы.</p>
+    </div>
+
+    <div id="timeline" class="section">
+        <h2>Хронология событий (лента времени)</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">1 сентября 1939</div>
+                <div>Нападение Германии на Польшу — начало Второй мировой войны.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">22 июня 1941</div>
+                <div>Нападение Германии на СССР. Начало Великой Отечественной войны.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">5–6 декабря 1941</div>
+                <div>Контрнаступление под Москвой — первое крупное поражение вермахта.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">19 ноября 1942 – 2 февраля 1943</div>
+                <div>Сталинградская битва. Окружение и капитуляция 6-й армии Паулюса.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">5 июля – 23 августа 1943</div>
+                <div>Курская битва. Переход стратегической инициативы к Красной армии.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">6 июня 1944</div>
+                <div>Высадка союзников в Нормандии. Открытие Второго фронта.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">16 апреля – 2 мая 1945</div>
+                <div>Берлинская наступательная операция. Водружение Знамени Победы над Рейхстагом.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">8–9 мая 1945</div>
+                <div>Подписание Акта о капитуляции Германии. День Победы.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">9 августа – 2 сентября 1945</div>
+                <div>Разгром Квантунской армии. Капитуляция Японии. Окончание Второй мировой войны.</div>
+            </div>
+        </div>
+        <p style="margin-top: 1rem; font-size:0.8rem;">Хронология составлена по данным Росархива и официальных исторических документов.</p>
+    </div>
+</div>
+
+<div class="footer">
+    <p>©Информация основана на архивных документах, материалах Министерства обороны РФ и Российского государственного архива</p>
+</div>
+
+</body>
+</html>
